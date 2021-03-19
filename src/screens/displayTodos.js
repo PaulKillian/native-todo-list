@@ -12,17 +12,18 @@ export default class List extends Component {
   componentDidMount() {
     todosRef.on('value', snapshot => {
       const todoObj = snapshot.val();
-      let todos = todoObj.subject;
-      this.setState([{todos}]);
+      // let todos = todoObj.subject;
+      this.setState({todos: todoObj});
     });
   }
 
   render() {
-    if (this.state.todos.lenght > 0) {
+    console.log(this.state);
+    if (this.state.todos.length > 0) {
       return (
         <View style={styles.container}>
           {this.state.todos.map((todo, index) => {
-            return <Text key={index}>{todo.todos}</Text>;
+            return <Text key={index}>{todo.todo}</Text>;
           })}
         </View>
       );
