@@ -5,16 +5,18 @@ import {Input} from 'react-native-elements';
 // import {ListItem} from 'react-native-elements';
 import {db} from '../config';
 
-let addTodo = todo => {
-  db.ref('/todos').push({
-    subject: todo,
-  });
-};
-
 export default class ArddTodos extends Component {
   state = {
     todo: '',
+    id: 0,
   };
+
+  writeTodoData() {
+    this.setState({id: this.state.id + 1});
+    db.ref('todos/' + this.state.id).set({
+      todo: this.state.todo,
+    });
+  }
 
   handleChange = event => {
     this.setState({
@@ -23,7 +25,8 @@ export default class ArddTodos extends Component {
   };
 
   handleSubmit = () => {
-    addTodo(this.state.todo);
+    // addTodo(this.state.todo);
+    this.writeTodoData();
     Alert.alert('Successful');
   };
   render() {
