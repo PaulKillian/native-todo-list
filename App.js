@@ -8,15 +8,13 @@
 
 import React from 'react';
 import type {Node} from 'react';
-import AddTodos from './src/screens/addTodos';
-import DisplayTodos from './src/screens/displayTodos';
+import CaptureTime from './src/screens/time'
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App: () => Node = () => {
   return (
     <SafeAreaProvider>
-      <AddTodos />
-      <DisplayTodos />
+      <CaptureTime/>
     </SafeAreaProvider>
   );
 };
