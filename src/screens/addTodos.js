@@ -15,7 +15,9 @@ export default class ArddTodos extends Component {
     this.setState({id: this.state.id + 1});
     db.ref('todos/' + this.state.id).set({
       todo: this.state.todo,
+      id: this.state.id,
     });
+    console.log(this.state);
   }
 
   handleChange = event => {
